@@ -11,10 +11,14 @@ public class CustomerTest {
     static final Movie regular = new Movie("一般", Movie.REGULAR);
     @Test
     public void smokeTest() {
-        Customer customer = new Customer("増田") ;
-        customer.addRental(new Rental(newOne,3));
-        customer.addRental(new Rental(children,2));
-        customer.addRental(new Rental(regular,1));
+
+        Rentals rentals = new Rentals();
+        rentals.addRental(new Rental(newOne,3));
+        rentals.addRental(new Rental(children,2));
+        rentals.addRental(new Rental(regular,1));
+
+        Customer customer = new Customer("増田",rentals) ;
+
         System.out.println(customer.statement());
     }
 
