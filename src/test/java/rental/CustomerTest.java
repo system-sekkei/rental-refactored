@@ -19,7 +19,9 @@ public class CustomerTest {
 
         Customer customer = new Customer("増田",rentals) ;
 
-        System.out.println(customer.statement());
+        Statement statement = new Statement(customer);
+
+        System.out.println(statement.statement());
     }
 
 }
