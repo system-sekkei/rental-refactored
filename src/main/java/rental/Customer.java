@@ -1,8 +1,5 @@
 package rental;
 
-import java.util.ArrayList;
-import java.util.List;
-
 class Customer {
     String name;
     Rentals rentals = new Rentals();
