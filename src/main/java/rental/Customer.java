@@ -23,7 +23,7 @@ class Customer {
         int totalAmount = 0;
         int frequentRenterPoints = 0;
 
-        String result = "Rental Record for " + name() + "\n";
+        String result = "レンタル記録 " + name() + "\n";
 
         for (Rental each : rentals) {
             int thisAmount = 0;
@@ -51,8 +51,8 @@ class Customer {
 
         }
 
-        result += "Amount owed is " + totalAmount + "\n";
-        result += "You earned " + frequentRenterPoints + " frequent renter points";
+        result += "レンタル金額 " + totalAmount + "円\n";
+        result += "獲得ポイント " + frequentRenterPoints + "p";
         return result;
     }
 }
