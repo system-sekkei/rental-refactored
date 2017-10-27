@@ -2,13 +2,15 @@ package rental;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static rental.MovieType.CHILDREN;
+import static rental.MovieType.NEW_RELEASE;
+import static rental.MovieType.REGULAR;
 
 public class CustomerTest {
 
-    static final Movie newOne = new Movie("新作", Movie.NEW_RELEASE);
-    static final Movie children = new Movie("子供向け", Movie.CHILDREN);
-    static final Movie regular = new Movie("一般", Movie.REGULAR);
+    static final Movie newOne = new Movie("新作", NEW_RELEASE);
+    static final Movie children = new Movie("子供向け", CHILDREN);
+    static final Movie regular = new Movie("一般", REGULAR);
     @Test
     public void smokeTest() {
 

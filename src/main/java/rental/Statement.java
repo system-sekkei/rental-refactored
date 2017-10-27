@@ -1,5 +1,7 @@
 package rental;
 
+import static rental.MovieType.*;
+
 class Statement {
 
     Customer customer;
@@ -15,22 +17,22 @@ class Statement {
 
         for (Rental each : customer.rentals.asList()) {
             int thisAmount = 0;
-            switch( each.movie().priceCode()) {
-                case Movie.REGULAR:
+            switch( each.movie().movieType()) {
+                case REGULAR:
                     thisAmount += 200;
                     if( each.daysRented()>2) thisAmount += (each.daysRented -2 ) * 150;
                     break;
-                case Movie.NEW_RELEASE:
+                case NEW_RELEASE:
                     thisAmount += each.daysRented() * 300;
                     break;
-                case Movie.CHILDREN:
+                case CHILDREN:
                     thisAmount += 150;
                     if(each.daysRented() > 3) thisAmount += (each.daysRented() -3 ) * 150;
                     break;
             }
 
             frequentRenterPoints ++;
-            if( each.movie().priceCode() == Movie.NEW_RELEASE && each.daysRented() > 1 )
+            if( each.movie().movieType() == NEW_RELEASE && each.daysRented() > 1 )
                 frequentRenterPoints ++;
 
             result += "\t" + each.movie().title() + "\t" + thisAmount + "\n";
