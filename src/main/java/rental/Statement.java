@@ -17,10 +17,7 @@ class Statement {
 
         for (Rental each : customer.rentals.asList()) {
             int thisAmount = each.amount();
-
-            frequentRenterPoints ++;
-            if( each.movie().movieType() == NEW_RELEASE && each.daysRented() > 1 )
-                frequentRenterPoints ++;
+            frequentRenterPoints += each.frequentPoints();
 
             result += "\t" + each.movie().title() + "\t" + thisAmount + "\n";
 

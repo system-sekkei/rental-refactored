@@ -1,5 +1,7 @@
 package rental;
 
+import static rental.MovieType.NEW_RELEASE;
+
 class Rental {
     Movie movie;
     int daysRented;
@@ -34,5 +36,13 @@ class Rental {
         }
 
         return amount;
+    }
+
+    int frequentPoints() {
+        int points = 1;
+        if( movie().movieType() == NEW_RELEASE && daysRented() > 1 )
+            points ++;
+
+        return points;
     }
 }
