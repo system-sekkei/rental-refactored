@@ -10,19 +10,16 @@ class Statement {
     }
 
     String statement() {
-        int totalAmount = 0;
-        int frequentRenterPoints = 0;
 
+        int frequentRenterPoints = 0;
         String result = "レンタル記録 " + customer.name() + "\n";
 
         for (Rental each : customer.rentals.asList()) {
-            int thisAmount = each.amount();
             frequentRenterPoints += each.frequentPoints();
-
-            result += "\t" + each.movie().title() + "\t" + thisAmount + "\n";
-
-            totalAmount += thisAmount;
+            result += "\t" + each.movie().title() + "\t" + each.amount() + "\n";
         }
+
+        int totalAmount = customer.rentals.totalAmount();
 
         result += "レンタル金額 " + totalAmount + "円\n";
         result += "獲得ポイント " + frequentRenterPoints + "p";

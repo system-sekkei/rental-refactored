@@ -13,4 +13,13 @@ public class Rentals {
     List<Rental> asList(){
         return rentals;
     }
+
+    int totalAmount() {
+        int result = 0;
+        for (Rental each : rentals) {
+            result += each.amount();
+        }
+
+        return result;
+    }
 }
