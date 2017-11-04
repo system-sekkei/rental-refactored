@@ -20,22 +20,24 @@ class Rental {
     }
 
     int amount() {
-        int amount = 0;
+        int baseAmount = 0;
+        int additionalAmount = 0;
         switch( movie.movieType()) {
             case REGULAR:
-                amount += 200;
-                if( daysRented()>2) amount += (daysRented -2 ) * 150;
+                baseAmount = 200;
+                if( daysRented()>2) additionalAmount = (daysRented -2 ) * 150;
                 break;
             case NEW_RELEASE:
-                amount += daysRented() * 300;
+                baseAmount = 0;
+                additionalAmount = daysRented() * 300;
                 break;
             case CHILDREN:
-                amount += 150;
-                if(daysRented() > 3) amount += (daysRented() -3 ) * 150;
+                baseAmount = 150;
+                if(daysRented() > 3) additionalAmount = (daysRented() -3 ) * 150;
                 break;
         }
 
-        return amount;
+        return baseAmount + additionalAmount;
     }
 
     int frequentPoints() {

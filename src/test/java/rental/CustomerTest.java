@@ -9,7 +9,7 @@ import static rental.MovieType.REGULAR;
 public class CustomerTest {
 
     static final Movie newOne = new Movie("新作", NEW_RELEASE);
-    static final Movie children = new Movie("子供向け", CHILDREN);
+    static final Movie children = new Movie("子供", CHILDREN);
     static final Movie regular = new Movie("一般", REGULAR);
     @Test
     public void smokeTest() {
