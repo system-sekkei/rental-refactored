@@ -15,10 +15,6 @@ class Rental {
         return movie;
     }
 
-    int daysRented() {
-        return daysRented;
-    }
-
     int amount() {
         int baseAmount = 0;
         int additionalAmount = 0;
@@ -31,18 +27,18 @@ class Rental {
                 baseAmount = 200;
                 baseDays = 2;
                 amountPerDay = 150;
-                if(daysRented() > baseDays) additionalAmount = (daysRented -baseDays ) * amountPerDay;
+                if(daysRented > baseDays) additionalAmount = (daysRented - baseDays) * amountPerDay;
                 break;
             case NEW_RELEASE:
                 baseAmount = 0;
                 amountPerDay = 300;
-                additionalAmount = daysRented() * amountPerDay;
+                additionalAmount = daysRented * amountPerDay;
                 break;
             case CHILDREN:
                 baseAmount = 150;
                 baseDays = 3;
                 amountPerDay = 150;
-                if(daysRented() > baseDays) additionalAmount = (daysRented() -baseDays ) * amountPerDay;
+                if(daysRented > baseDays) additionalAmount = (daysRented - baseDays) * amountPerDay;
                 break;
         }
 
@@ -51,7 +47,7 @@ class Rental {
 
     int frequentPoints() {
         int points = 1;
-        if( movie().movieType() == NEW_RELEASE && daysRented() > 1 )
+        if( movie().movieType() == NEW_RELEASE && daysRented > 1 )
             points ++;
 
         return points;
