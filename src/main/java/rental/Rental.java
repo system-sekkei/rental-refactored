@@ -16,16 +16,12 @@ class Rental {
     }
 
     int amount() {
-
         MovieType movieType = movie.movieType();
         return movieType.amount(daysRented);
     }
 
     int frequentPoints() {
-        int points = 1;
-        if( movie().movieType() == NEW_RELEASE && daysRented > 1 )
-            points ++;
-
-        return points;
+        MovieType movieType = movie.movieType();
+        return movieType.point(daysRented);
     }
 }
