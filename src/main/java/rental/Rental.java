@@ -16,19 +16,9 @@ class Rental {
     }
 
     int amount() {
-        int baseAmount = 0;
-        int additionalAmount = 0;
-
-        int baseDays = 0;
-        int amountPerDay = 0;
 
         MovieType movieType = movie.movieType();
-        baseAmount = movieType.baseAmount;
-        baseDays = movieType.baseDays;
-        amountPerDay = movieType.amountPerDay;
-
-        if(daysRented > baseDays) additionalAmount = (daysRented - baseDays) * amountPerDay;
-        return baseAmount + additionalAmount;
+        return movieType.amount(daysRented);
     }
 
     int frequentPoints() {
