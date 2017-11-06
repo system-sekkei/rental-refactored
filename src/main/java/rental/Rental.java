@@ -1,6 +1,5 @@
 package rental;
 
-import static rental.MovieType.NEW_RELEASE;
 
 class Rental {
     Movie movie;

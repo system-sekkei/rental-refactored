@@ -3,12 +3,11 @@ package rental;
 import org.junit.Test;
 
 import static rental.MovieType.CHILDREN;
-import static rental.MovieType.NEW_RELEASE;
 import static rental.MovieType.REGULAR;
 
 public class CustomerTest {
 
-    static final Movie newOne = new Movie("新作", NEW_RELEASE);
+    static final Movie newOne = new Movie("新作", new NewRelease());
     static final Movie children = new Movie("子供", CHILDREN);
     static final Movie regular = new Movie("一般", REGULAR);
     @Test
