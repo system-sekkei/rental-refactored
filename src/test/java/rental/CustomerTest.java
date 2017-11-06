@@ -17,9 +17,9 @@ public class CustomerTest {
 
         Rentals rentals = new Rentals(customer);
 
-        rentals.addRental(new Rental(newOne,3));
-        rentals.addRental(new Rental(children,2));
-        rentals.addRental(new Rental(regular,1));
+        rentals.addRental(new Rental(newOne,new DaysRented(3)));
+        rentals.addRental(new Rental(children,new DaysRented(2)));
+        rentals.addRental(new Rental(regular,new DaysRented(1)));
 
         Statement statement = new Statement(rentals);
 
