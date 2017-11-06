@@ -13,14 +13,15 @@ public class CustomerTest {
     @Test
     public void smokeTest() {
 
-        Rentals rentals = new Rentals();
+        Customer customer = new Customer("増田") ;
+
+        Rentals rentals = new Rentals(customer);
+
         rentals.addRental(new Rental(newOne,3));
         rentals.addRental(new Rental(children,2));
         rentals.addRental(new Rental(regular,1));
 
-        Customer customer = new Customer("増田",rentals) ;
-
-        Statement statement = new Statement(customer);
+        Statement statement = new Statement(rentals);
 
         System.out.println(statement.statement());
     }
