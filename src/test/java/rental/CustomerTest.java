@@ -1,9 +1,12 @@
 package rental;
 
 import org.junit.Test;
+import rental.rate.DaysRented;
+import rental.rate.NewRelease;
+import rental.rate.OldRelease;
 
-import static rental.MovieType.CHILDREN;
-import static rental.MovieType.REGULAR;
+import static rental.rate.MovieType.CHILDREN;
+import static rental.rate.MovieType.REGULAR;
 
 public class CustomerTest {
 

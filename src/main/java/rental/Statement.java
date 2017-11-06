@@ -1,7 +1,5 @@
 package rental;
 
-import static rental.MovieType.*;
-
 class Statement {
 
     Rentals rentals;
