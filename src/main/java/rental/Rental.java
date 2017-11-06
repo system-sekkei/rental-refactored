@@ -1,6 +1,9 @@
 package rental;
 
 
+import rental.rate.DaysRented;
+import rental.rate.Rate;
+
 class Rental {
     Movie movie;
     DaysRented daysRented;
