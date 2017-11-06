@@ -4,7 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Rentals {
+    Customer customer;
     List<Rental> rentals = new ArrayList<>();
+
+    Rentals(Customer customer) {
+        this.customer = customer;
+    }
 
     void addRental(Rental rental) {
         rentals.add(rental);
@@ -29,5 +34,9 @@ public class Rentals {
             result += each.frequentPoints();
         }
        return result;
+    }
+
+    String customerName() {
+        return customer.name();
     }
 }
