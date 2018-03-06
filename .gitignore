@@ -1,0 +1,11 @@
+# For IntelliJ IDEA
+**/out
+.idea
+*.iml
+*.ipr
+*.iws
+
+# For Gradle
+**/build
+build/**
+.gradle
