@@ -1,10 +1,12 @@
 package rental;
 
 
-import rental.rate.DaysRented;
-import rental.rate.Rate;
+import rental.charge.ChargeType;
+import rental.movie.Movie;
+import rental.point.Point;
+import rental.point.PointType;
 
-class Rental {
+public class Rental {
     Movie movie;
     DaysRented daysRented;
 
@@ -13,17 +15,29 @@ class Rental {
         this.daysRented = daysRented;
     }
 
-    Movie movie() {
+    public Movie movie() {
         return movie;
     }
 
-    int amount() {
-        Rate movieType = movie.movieType();
-        return movieType.amount(daysRented);
+    public int chargeAmount() {
+        return chargeType().amount(daysRented);
     }
 
-    int frequentPoints() {
-        Rate movieType = movie.movieType();
-        return movieType.point(daysRented);
+    private ChargeType chargeType() {
+        if(isNewRelease()) return ChargeType.NEW_RELEASE;
+        if(movie.forChildren()) return ChargeType.CHILDREN;
+        return ChargeType.REGULAR;
+    }
+    private boolean isNewRelease() {
+        return movie.daysFromRelease() < 90;
+    }
+
+    Point frequentPoints() {
+        return pointType().point(daysRented);
+    }
+
+    private PointType pointType() {
+        if(isNewRelease()) return PointType.NEW_RELEASE;
+        return PointType.OLD_RELEASE;
     }
 }

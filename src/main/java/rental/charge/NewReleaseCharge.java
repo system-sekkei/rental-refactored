@@ -1,7 +1,6 @@
 package rental.charge;
 
-import rental.rate.DaysRented;
-import rental.rate.Rate;
+import rental.DaysRented;
 
 public class NewReleaseCharge implements Charge {
 

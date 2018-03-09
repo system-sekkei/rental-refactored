@@ -1,5 +1,7 @@
 package rental.charge;
 
+import rental.DaysRented;
+
 public enum ChargeType {
     NEW_RELEASE(0, 0, 300),
     REGULAR(200,2,150),
@@ -15,8 +17,8 @@ public enum ChargeType {
         this.amountPerDay = amountPerDay;
     }
 
-    public int amount(int daysRented) {
-        return baseAmount + additionalAmount(daysRented);
+    public int amount(DaysRented daysRented) {
+        return baseAmount + additionalAmount(daysRented.intValue());
     }
 
     private int additionalAmount(int daysRented) {

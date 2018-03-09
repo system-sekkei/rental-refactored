@@ -1,18 +1,19 @@
 package rental;
 
 import org.junit.Test;
-import rental.rate.DaysRented;
-import rental.rate.NewRelease;
-import rental.rate.OldRelease;
+import rental.customer.Customer;
+import rental.movie.Movie;
+import rental.movie.MovieType;
 
-import static rental.rate.MovieType.CHILDREN;
-import static rental.rate.MovieType.REGULAR;
+import rental.statement.Statement;
+
+import java.time.LocalDate;
 
 public class CustomerTest {
 
-    static final Movie newOne = new Movie("新作", new NewRelease());
-    static final Movie children = new Movie("子供", new OldRelease(CHILDREN));
-    static final Movie regular = new Movie("一般", new OldRelease(REGULAR));
+    static final Movie newOne = new Movie("新作", LocalDate.now().minusDays(10), MovieType.Children);
+    static final Movie children = new Movie("子供", LocalDate.now().minusDays(30*10),MovieType.Children);
+    static final Movie regular = new Movie("一般", LocalDate.now().minusDays(30*5), MovieType.General);
     @Test
     public void smokeTest() {
 
