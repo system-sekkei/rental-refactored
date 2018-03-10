@@ -1,16 +1,17 @@
-package rental;
+package domain.model.rental;
 
 
-import rental.charge.ChargeType;
-import rental.movie.Movie;
-import rental.point.Point;
-import rental.point.PointType;
+import domain.model.rental.charge.Charge;
+import domain.model.rental.charge.ChargeType;
+import domain.model.rental.movie.Movie;
+import domain.model.rental.point.Point;
+import domain.model.rental.point.PointType;
 
 public class Rental {
     Movie movie;
     DaysRented daysRented;
 
-    Rental(Movie movie, DaysRented daysRented) {
+    public Rental(Movie movie, DaysRented daysRented) {
         this.movie = movie;
         this.daysRented = daysRented;
     }
@@ -19,7 +20,7 @@ public class Rental {
         return movie;
     }
 
-    public int chargeAmount() {
+    public Charge chargeAmount() {
         return chargeType().amount(daysRented);
     }
 

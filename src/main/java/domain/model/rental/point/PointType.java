@@ -1,12 +1,11 @@
-package rental.point;
+package domain.model.rental.point;
 
-import rental.DaysRented;
+import domain.model.rental.DaysRented;
 
 public enum PointType {
 
     NEW_RELEASE,
     OLD_RELEASE;
-
 
     Point zero = new Point(0);
     Point one = new Point(1);
@@ -19,7 +18,7 @@ public enum PointType {
 
     private Point bonusPoint(DaysRented daysRented) {
         if( this != NEW_RELEASE) return zero;
-        if( daysRented.lessThan(2) ) return zero;
+        if( daysRented.within(1) ) return zero;
 
         return one;
     }
