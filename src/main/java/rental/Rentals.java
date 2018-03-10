@@ -1,5 +1,7 @@
 package rental;
 
+import basic.Accumulate;
+import basic.Total;
 import rental.customer.Customer;
 import rental.point.Point;
 
@@ -32,11 +34,11 @@ public class Rentals {
     }
 
     public Point totalPoints() {
-        Point result = new Point(0);
+        Total<Point> total = new Total<>();
         for( Rental each : rentals) {
-            result = result.add(each.frequentPoints());
+            total.cumulate(each.frequentPoints());
         }
-       return result;
+       return total.result();
     }
 
     public String customerName() {
