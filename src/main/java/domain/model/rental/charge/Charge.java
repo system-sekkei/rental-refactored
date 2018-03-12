@@ -5,7 +5,7 @@ import domain.generics.Accumulatable;
 public class Charge implements Accumulatable<Charge> {
     int value ;
 
-    public Charge(int value) {
+    Charge(int value) {
         this.value = value;
     }
 
@@ -17,5 +17,9 @@ public class Charge implements Accumulatable<Charge> {
     @Override
     public String toString() {
         return value + "円";
+    }
+
+    public static Charge of(int value) {
+        return new Charge(value);
     }
 }

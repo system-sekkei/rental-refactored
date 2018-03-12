@@ -1,6 +1,6 @@
 package presentation.view.statement;
 
-import domain.model.rental.DaysRented;
+import domain.model.rental.Days;
 import domain.model.rental.Rental;
 import domain.model.rental.Rentals;
 import org.junit.Test;
@@ -21,9 +21,9 @@ public class StatementTest {
 
         Rentals rentals = new Rentals(customer);
 
-        rentals.addRental(new Rental(newOne,new DaysRented(3)));
-        rentals.addRental(new Rental(children,new DaysRented(2)));
-        rentals.addRental(new Rental(regular,new DaysRented(1)));
+        rentals.addRental(new Rental(newOne,Days.of(3)));
+        rentals.addRental(new Rental(children,Days.of(2)));
+        rentals.addRental(new Rental(regular,Days.of(1)));
 
         Statement statement = new Statement(rentals);
 

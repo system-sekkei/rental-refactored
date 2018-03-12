@@ -1,32 +1,27 @@
 package domain.model.rental.charge;
 
-import domain.model.rental.DaysRented;
+import domain.model.rental.Days;
 
 public enum ChargeType {
-    NEW_RELEASE(0, 0, 300),
-    REGULAR(200,2,150),
-    CHILDREN(150,3,150);
+    NEW_RELEASE(Charge.of(0), Days.of(0), PerDay.of(300)),
+    REGULAR(Charge.of(200),Days.of(2),PerDay.of(150)),
+    CHILDREN(Charge.of(150),Days.of(3),PerDay.of(150));
 
-    int baseCharge = 0;
-    int baseDays = 0;
-    int chargePerDay ;
+    Charge baseCharge;
+    Days baseDays;
+    PerDay perDay;
 
-    private ChargeType(int baseCharge, int baseDays, int chargePerDay) {
+    ChargeType(Charge baseCharge, Days baseDays, PerDay perDay) {
         this.baseCharge = baseCharge;
         this.baseDays = baseDays;
-        this.chargePerDay = chargePerDay;
+        this.perDay = perDay;
     }
 
-    public Charge amount(DaysRented daysRented) {
-        Charge base = new Charge(baseCharge);
-        return base.add(additionalAmount(daysRented));
-    }
+    public Charge amount(Days days) {
+        if( days.within(baseDays) ) return baseCharge;
 
-    private Charge additionalAmount(DaysRented daysRented) {
-        if( daysRented.within(baseDays)) return new Charge(0);
-
-        ChargePerDay perDay = new ChargePerDay(chargePerDay);
-        DaysRented additionalDays = daysRented.minus(baseDays);
-        return perDay.forDays(additionalDays);
+        Days additionalDays = days.minus(baseDays);
+        Charge additional = perDay.forDays(additionalDays);
+        return baseCharge.add(additional);
     }
 }
