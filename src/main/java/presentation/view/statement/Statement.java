@@ -3,6 +3,9 @@ package presentation.view.statement;
 import domain.model.rental.Rental;
 import domain.model.rental.Rentals;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 public class Statement {
 
     Rentals rentals;
@@ -17,13 +20,17 @@ public class Statement {
     }
 
     String header() {
-        return String.format("レンタル記録 %s\n", rentals.customer());
+        return String.format(
+                "レンタル記録 %s様 %s\n",
+                rentals.customer(), LocalDate.now());
     }
 
     String details() {
         StringBuilder result = new StringBuilder();
         for (Rental each : rentals.asList()) {
-            result.append(String.format("%s\t%s\n" , each.movie() ,each.chargeAmount()));
+            result.append(String.format(
+                    "%s\t%s\t%s\t%s\n" ,
+                    each.movie() , each.days(), each.chargeAmount(), each.frequentPoints()));
         }
         return result.toString();
     }

@@ -20,25 +20,26 @@ public class Rental {
         return movie;
     }
 
+    public Days days() {
+        return days;
+    }
+
     public Charge chargeAmount() {
         return chargeType().amount(days);
     }
 
     private ChargeType chargeType() {
-        if(isNewRelease()) return ChargeType.NEW_RELEASE;
+        if(movie.isNewRelease()) return ChargeType.NEW_RELEASE;
         if(movie.forChildren()) return ChargeType.CHILDREN;
         return ChargeType.REGULAR;
     }
-    private boolean isNewRelease() {
-        return movie.daysFromRelease() < 90;
-    }
 
-    Point frequentPoints() {
+    public Point frequentPoints() {
         return pointType().point(days);
     }
 
     private PointType pointType() {
-        if(isNewRelease()) return PointType.NEW_RELEASE;
+        if(movie.isNewRelease()) return PointType.NEW_RELEASE;
         return PointType.OLD_RELEASE;
     }
 }
