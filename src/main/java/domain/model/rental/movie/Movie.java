@@ -1,32 +1,29 @@
 package domain.model.rental.movie;
 
-import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
-
 public class Movie {
 
     String title;
 
     ReleaseDate releaseDate;
-    MovieType type;
+    Category type;
 
 
-    Movie(String title, ReleaseDate releaseDate, MovieType type) {
+    Movie(String title, ReleaseDate releaseDate, Category type) {
         this.title = title;
         this.releaseDate = releaseDate;
         this.type = type;
     }
 
     public static Movie children(String title, ReleaseDate releaseDate) {
-        return new Movie(title,releaseDate,MovieType.Children);
+        return new Movie(title,releaseDate, Category.Children);
     }
 
     public static Movie create(String title, ReleaseDate releaseDate) {
-        return new Movie(title,releaseDate,MovieType.General);
+        return new Movie(title,releaseDate, Category.General);
     }
 
     public boolean forChildren() {
-        return type == MovieType.Children;
+        return type == Category.Children;
     }
 
     public boolean isNewRelease() {
