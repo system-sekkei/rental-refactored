@@ -1,6 +1,7 @@
 package domain.model.rental.charge;
 
 import domain.model.rental.Days;
+import domain.model.rental.movie.Movie;
 
 public enum ChargeType {
     NEW_RELEASE(Charge.of(0), Days.of(0), PerDay.of(300)),
@@ -23,5 +24,12 @@ public enum ChargeType {
         Days additionalDays = days.minus(baseDays);
         Charge additional = perDay.forDays(additionalDays);
         return baseCharge.add(additional);
+    }
+
+    public static ChargeType of(Movie movie) {
+        if(movie.isNewRelease()) return NEW_RELEASE;
+        if(movie.forChildren()) return CHILDREN;
+        return REGULAR;
+
     }
 }
