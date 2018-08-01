@@ -4,7 +4,6 @@ import domain.model.rental.Rental;
 import domain.model.rental.Rentals;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 public class Statement {
 
@@ -28,11 +27,15 @@ public class Statement {
     String details() {
         StringBuilder result = new StringBuilder();
         for (Rental each : rentals.asList()) {
-            result.append(String.format(
-                    "%s\t%s\t%s\t%s\n" ,
-                    each.movie() , each.days(), each.chargeAmount(), each.frequentPoints()));
+            addDetail(result, each);
         }
         return result.toString();
+    }
+
+    private void addDetail(StringBuilder result, Rental each) {
+        result.append(String.format(
+                "%s\t%s\t%s\t%s\n" ,
+                each.movie(), each.days(), each.amount(), each.points()));
     }
 
     String footer() {
@@ -40,10 +43,10 @@ public class Statement {
     }
 
     String totalCharge() {
-        return String.format("レンタル金額 %s", rentals.totalAmount());
+        return String.format("レンタル金額 %s", rentals.charge());
     }
 
     String totalPoints() {
-        return String.format("獲得ポイント %s" , rentals.totalPoints());
+        return String.format("獲得ポイント %s" , rentals.points());
     }
 }
