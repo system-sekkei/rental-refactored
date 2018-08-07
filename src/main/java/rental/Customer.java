@@ -21,7 +21,7 @@ class Customer {
 
     String statement() {
         int totalAmount = 0;
-        int frequentRenterPoints = 0;
+        int frequentRentalPoints = 0;
 
         String result = "レンタル記録 " + name() + "\n";
 
@@ -41,9 +41,9 @@ class Customer {
                     break;
             }
 
-            frequentRenterPoints ++;
+            frequentRentalPoints ++;
             if( each.movie().priceCode() == Movie.NEW_RELEASE && each.daysRented() > 1 )
-                frequentRenterPoints ++;
+                frequentRentalPoints ++;
 
             result += "\t" + each.movie().title() + "\t" + thisAmount + "\n";
 
@@ -52,7 +52,7 @@ class Customer {
         }
 
         result += "レンタル金額 " + totalAmount + "円\n";
-        result += "獲得ポイント " + frequentRenterPoints + "p";
+        result += "獲得ポイント " + frequentRentalPoints + "p";
         return result;
     }
 }
