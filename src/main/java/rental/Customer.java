@@ -44,20 +44,21 @@ class Customer {
     }
 
     private int getThisAmount(Rental each) {
-        int thisAmount = 0;
+        int baseAmount = 0;
+        int additionalAmount = 0;
         switch( each.movie().priceCode()) {
             case Movie.REGULAR:
-                thisAmount = 200;
-                if( each.daysRented()>2) thisAmount += (each.daysRented -2 ) * 150;
+                baseAmount = 200;
+                if( each.daysRented()>2) additionalAmount = (each.daysRented -2 ) * 150;
                 break;
             case Movie.NEW_RELEASE:
-                thisAmount = each.daysRented() * 300;
+                baseAmount = each.daysRented() * 300;
                 break;
             case Movie.CHILDREN:
-                thisAmount = 150;
-                if(each.daysRented() > 3) thisAmount += (each.daysRented() -3 ) * 150;
+                baseAmount = 150;
+                if(each.daysRented() > 3) additionalAmount = (each.daysRented() -3 ) * 150;
                 break;
         }
-        return thisAmount;
+        return baseAmount + additionalAmount;
     }
 }
