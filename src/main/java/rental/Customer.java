@@ -26,7 +26,7 @@ class Customer {
         String result = "レンタル記録 " + name() + "\n";
 
         for (Rental each : rentals) {
-            int thisAmount = getThisAmount(each);
+            int thisAmount = each.amount();
 
             frequentRentalPoints ++;
             if( each.movie().priceCode() == Movie.NEW_RELEASE && each.daysRented() > 1 )
@@ -41,24 +41,5 @@ class Customer {
         result += "レンタル金額 " + totalAmount + "円\n";
         result += "獲得ポイント " + frequentRentalPoints + "p";
         return result;
-    }
-
-    private int getThisAmount(Rental each) {
-        int baseAmount = 0;
-        int additionalAmount = 0;
-        switch( each.movie().priceCode()) {
-            case Movie.REGULAR:
-                baseAmount = 200;
-                if( each.daysRented()>2) additionalAmount = (each.daysRented -2 ) * 150;
-                break;
-            case Movie.NEW_RELEASE:
-                baseAmount = each.daysRented() * 300;
-                break;
-            case Movie.CHILDREN:
-                baseAmount = 150;
-                if(each.daysRented() > 3) additionalAmount = (each.daysRented() -3 ) * 150;
-                break;
-        }
-        return baseAmount + additionalAmount;
     }
 }
